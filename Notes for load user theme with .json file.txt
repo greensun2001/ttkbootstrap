@@ -1,0 +1,73 @@
+# the function
+#####################################################################
+def load_user_themes(self, file):
+        """Load user themes saved in json format"""
+        with open(file, encoding="utf-8") as f:
+            data = json.load(f)
+            themes = data["themes"]
+        for theme in themes:
+            for name, definition in theme.items():
+                self.register_theme(
+                    ThemeDefinition(
+                        name=name,
+                        themetype=definition["type"],
+                        colors=definition["colors"],
+                    )
+                )
+#####################################################################
+The variable "theme" should be like a dict, and so "themes" should be like a list. 
+Then, in the json file, after "themes", use [] instead of {}
+Therefore, the json file for the user theme should be like the form as follows:
+{
+    "themes": 
+    [
+        {
+            "bcdttk1": 
+            {
+                "type": "light",
+                "colors": {
+                    "primary": "#0f4091",
+                    "secondary": "#adb5bd",
+                    "success": "#420F2A",
+                    "info": "#17a2b8",
+                    "warning": "#882d00",
+                    "danger": "#d9534f",
+                    "light": "#ebebeb",
+                    "dark": "#343A40",
+                    "bg": "#ffffff",
+                    "fg": "#000000",
+                    "selectbg": "#003162",
+                    "selectfg": "#ffffff",
+                    "border": "#c0c0c0",
+                    "inputfg": "#00008c",
+                    "inputbg": "#ffffff",
+                    "active": "#0000ff"
+                }
+            }
+        },
+        {
+            "bcdttk2": 
+            {
+                "type": "light",
+                "colors": {
+                    "primary": "#0f4091",
+                    "secondary": "#adb5bd",
+                    "success": "#D20057",
+                    "info": "#17a2b8",
+                    "warning": "#882d00",
+                    "danger": "#d9534f",
+                    "light": "#ebebeb",
+                    "dark": "#343A40",
+                    "bg": "#ffffff",
+                    "fg": "#000000",
+                    "selectbg": "#003162",
+                    "selectfg": "#ffffff",
+                    "border": "#c0c0c0",
+                    "inputfg": "#00008c",
+                    "inputbg": "#ffffff",
+                    "active": "#0000ff"
+                }
+            }
+        }
+    ]
+}
